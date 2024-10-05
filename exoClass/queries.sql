@@ -26,23 +26,29 @@ ALTER FUNCTION public.create_profile()
 -- DROP FUNCTION IF EXISTS public.update_vote_count();
 
 CREATE OR REPLACE FUNCTION public.update_vote_count()
-    RETURNS trigger
-    LANGUAGE 'plpgsql'
-    COST 100
-    VOLATILE NOT LEAKPROOF
+RETURNS trigger
+LANGUAGE 'plpgsql'
 AS $BODY$
 BEGIN
     IF TG_OP = 'INSERT' THEN
         IF NEW.comment_id IS NOT NULL THEN
-            UPDATE main_comment SET vote_count = vote_count + 1 WHERE id = NEW.comment_id;
+            UPDATE main_comment SET vote_count = vote_count + CASE WHEN NEW.is_upvoted THEN 1 ELSE -1 END WHERE id = NEW.comment_id;
         ELSIF NEW.post_id IS NOT NULL THEN
-            UPDATE main_post SET vote_count = vote_count + 1 WHERE id = NEW.post_id;
+            UPDATE main_post SET vote_count = vote_count + CASE WHEN NEW.is_upvoted THEN 1 ELSE -1 END WHERE id = NEW.post_id;
         END IF;
     ELSIF TG_OP = 'DELETE' THEN
         IF OLD.comment_id IS NOT NULL THEN
-            UPDATE main_comment SET vote_count = vote_count - 1 WHERE id = OLD.comment_id;
+            UPDATE main_comment SET vote_count = vote_count - CASE WHEN OLD.is_upvoted THEN 1 ELSE -1 END WHERE id = OLD.comment_id;
         ELSIF OLD.post_id IS NOT NULL THEN
-            UPDATE main_post SET vote_count = vote_count - 1 WHERE id = OLD.post_id;
+            UPDATE main_post SET vote_count = vote_count - CASE WHEN OLD.is_upvoted THEN 1 ELSE -1 END WHERE id = OLD.post_id;
+        END IF;
+    ELSIF TG_OP = 'UPDATE' THEN
+        IF NEW.is_upvoted <> OLD.is_upvoted THEN
+            IF NEW.comment_id IS NOT NULL THEN
+                UPDATE main_comment SET vote_count = vote_count + CASE WHEN NEW.is_upvoted THEN 2 ELSE -2 END WHERE id = NEW.comment_id;
+            ELSIF NEW.post_id IS NOT NULL THEN
+                UPDATE main_post SET vote_count = vote_count + CASE WHEN NEW.is_upvoted THEN 2 ELSE -2 END WHERE id = NEW.post_id;
+            END IF;
         END IF;
     END IF;
     RETURN NULL;
