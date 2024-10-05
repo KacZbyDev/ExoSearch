@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Test</title>
+</head>
+<body>
+    <h1>Register</h1>
+    <form id="registrationForm">
+        {% csrf_token %}
+        <!-- Username Field -->
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <!-- Email Field -->
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <!-- Password Field -->
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <!-- Repeat Password Field -->
+        <label for="repeated_password">Repeat Password:</label>
+        <input type="password" id="repeated_password" name="repeated_password" required><br><br>
+
+        <!-- Submit Button -->
+        <input type="submit" value="Register">
+    </form>
+
+    <!-- Div to Display Response -->
+    <div id="response"></div>
+
+    <!-- JavaScript Code -->
+    <script>
+    // Function to get CSRF token from cookies
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let cookie of cookies) {
+                cookie = cookie.trim();
+                if (cookie.startsWith(name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    // Get CSRF token from cookies
+    const csrftoken = getCookie('csrftoken');
+
+    // Event Listener for Form Submission
+    document.getElementById('registrationForm').addEventListener('submit', function(event){
+        event.preventDefault(); // Prevent default form submission
+
+        // Collect Form Data
+        const username = document.getElementById('username').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const repeated_password = document.getElementById('repeated_password').value;
+
+        // Data Object to Send
+        const data = {
+            'username': username,
+            'email': email,
+            'password': password,
+            'repeated_password': repeated_password
+        };
+
+        // Fetch API Call to Django Endpoint
+        fetch('http://127.0.0.1:8000/register/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken // Add CSRF token to the request headers
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(json => {
+            // Display Response
+            document.getElementById('response').innerText = JSON.stringify(json, null, 2);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            document.getElementById('response').innerText = 'An error occurred.';
+        });
+    });
+</script>
+</body>
+</html>

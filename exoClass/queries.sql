@@ -77,3 +77,59 @@ CREATE OR REPLACE TRIGGER update_count_trigger
     ON public.main_vote
     FOR EACH ROW
     EXECUTE FUNCTION public.update_vote_count();
+
+-- FUNCTION: public.handle_node_profile_relation()
+
+-- DROP FUNCTION IF EXISTS public.handle_node_profile_relation();
+
+CREATE OR REPLACE FUNCTION public.handle_node_profile_relation()
+    RETURNS trigger
+    LANGUAGE 'plpgsql'
+    COST 100
+    VOLATILE NOT LEAKPROOF
+AS $BODY$
+BEGIN
+	INSERT INTO main_profilenode
+	SELECT NEW.id,
+	case
+		WHEN id = 1 THEN true
+		ELSE false
+	END AS is_unlocked,
+	id
+	from main_node;
+	RETURN NEW;
+END;
+$BODY$;
+
+ALTER FUNCTION public.handle_node_profile_relation()
+    OWNER TO postgres;
+
+CREATE OR REPLACE TRIGGER handle_node_profile_relation_trigger
+    AFTER INSERT
+    ON public.main_profile
+    FOR EACH ROW
+    EXECUTE FUNCTION public.handle_node_profile_relation();
+
+
+CREATE OR REPLACE FUNCTION handle_node_profile_relation()
+RETURNS TRIGGER AS $$
+BEGIN
+	INSERT INTO main_profilenode
+	SELECT
+	id,
+	CASE
+		WHEN NEW.id = 1 THEN false
+		ELSE TRUE
+	END AS is_unlocked,
+	NEW.id
+	FROM main_profile;
+	RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER handle_node_profile_relation_trigger
+AFTER INSERT ON main_node
+FOR EACH ROW
+EXECUTE FUNCTION handle_node_profile_relation()
+
+

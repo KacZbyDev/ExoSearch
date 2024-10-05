@@ -34,7 +34,7 @@ class Profile(models.Model):
 
 
 class ProfileNode(models.Model):
-    profile = models.OneToOneField(Profile, on_delete=models.CASCADE, primary_key=True, related_name='profile_node')
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='profile_node')
     node = models.ForeignKey(Node, on_delete=models.CASCADE, related_name='profile_nodes')
     is_unlocked = models.BooleanField()
 
@@ -85,7 +85,7 @@ class Post(models.Model):
 
 class Comment(models.Model):
     id = models.AutoField(primary_key=True)
-    date = models.DateTimeField()
+    date = models.DateTimeField(name="date")
     text = models.TextField()  # Changed from BigInt to TextField as likely intended
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='comments')
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
