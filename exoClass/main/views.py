@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -8,9 +8,8 @@ from .serializers import *
 from .models import Post, Comment, Vote
 
 @ensure_csrf_cookie
-@api_view(['GET'])
-def get_csrf_token(request)->Response:
-    return Response('csrfmiddlewaretoken')
+def get_csrf_token(request):
+    return JsonResponse({'detail': 'CSRF cookie set'})
 @api_view(['GET'])
 def get_post(request) -> Response:
     unserialized_data = Post.objects.all()
@@ -87,6 +86,7 @@ def handle_registration(request) -> Response:
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     except Exception as e:
+        print(e)
         return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 @api_view(["GET"])
 def get_node(request) -> Response:

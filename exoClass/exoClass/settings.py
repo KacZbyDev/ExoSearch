@@ -27,7 +27,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG') == 'True'
 
-ALLOWED_HOSTS = ['127.0.0.1','localhost:5174']
+ALLOWED_HOSTS = ['127.0.0.1','localhost']
 
 
 # Application definition
@@ -46,25 +46,23 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
-    'django.middleware.common.CommonMiddleware',
 ]
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5174'
 ]
-CORS_ALLOW_ALL_ORIGINS = False
-CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_ALL_ORIGINS = True
+
 
 CSRF_COOKIE_HTTPONLY = False  # This ensures JavaScript can access the CSRF token
-CSRF_TRUSTED_ORIGINS = ["http://localhost:5174","http://127.0.0,1:5174"]  # Add your frontend origin to the trusted list
+CSRF_TRUSTED_ORIGINS = ["http://localhost:5175","http://127.0.0.1:5175"]  # Add your frontend origin to the trusted list
 
 ROOT_URLCONF = 'exoClass.urls'
 
