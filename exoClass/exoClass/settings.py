@@ -44,25 +44,34 @@ INSTALLED_APPS = [
     'corsheaders'
 
 ]
+REST_FRAMEWORK = {
+
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+
+}
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:5174'
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:5174',
+    'http://localhost:5173'
 ]
-CORS_ALLOW_ALL_ORIGINS = True
+
 
 
 CSRF_COOKIE_HTTPONLY = False  # This ensures JavaScript can access the CSRF token
-CSRF_TRUSTED_ORIGINS = ["http://localhost:5175","http://127.0.0.1:5175"]  # Add your frontend origin to the trusted list
+CSRF_TRUSTED_ORIGINS = ["http://localhost:5174","http://127.0.0.1:5174"]  # Add your frontend origin to the trusted list
 
 ROOT_URLCONF = 'exoClass.urls'
 

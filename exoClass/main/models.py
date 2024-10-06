@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+import datetime
 
 
 class Node(models.Model):
@@ -73,7 +74,7 @@ class Option(models.Model):
 
 class Post(models.Model):
     id = models.AutoField(primary_key=True)
-    date = models.DateTimeField()
+    date = models.DateTimeField(default=datetime.date.today)
     text = models.TextField()
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='posts')
     header = models.CharField(max_length=255)
@@ -117,3 +118,23 @@ class Attempt(models.Model):
 
     def __str__(self):
         return f"Attempt by {self.profile} on {self.question} at {self.attempt_date}"
+class Exoplanets(models.Model):
+    pl_name = models.CharField(max_length=29)
+    hostname = models.CharField(max_length=27)
+    sy_snum = models.CharField(max_length=7)
+    sy_pnum = models.CharField(max_length=7)
+    discoverymethod = models.CharField(max_length=29)
+    disc_year = models.CharField(max_length=9)
+    disc_facility = models.CharField(max_length=46)
+    pl_rade = models.CharField(max_length=7, blank=True, null=True)
+    pl_radj = models.CharField(max_length=7, blank=True, null=True)
+    pl_bmasse = models.CharField(max_length=11, blank=True, null=True)
+    st_spectype = models.CharField(max_length=16, blank=True, null=True)
+    st_teff = models.CharField(max_length=8, blank=True, null=True)
+    st_rad = models.CharField(max_length=6, blank=True, null=True)
+    st_mass = models.CharField(max_length=7, blank=True, null=True)
+    st_met = models.CharField(max_length=6, blank=True, null=True)
+    st_metratio = models.CharField(max_length=11, blank=True, null=True)
+    rastr = models.CharField(max_length=14)
+    ra = models.CharField(max_length=11)
+    sy_dist = models.CharField(max_length=12, blank=True, null=True)

@@ -96,3 +96,9 @@ def get_node(request) -> Response:
 @api_view(['GET'])
 def handleTest(request) -> HttpResponse:
     return render(request,'test.html')
+@api_view(['GET'])
+def search_exoplanets(request,pattern="")->Response:
+    # data = MainExoplanets.objects.filter(name__icontains=pattern)
+    data = Exoplanets.objects.filter(pl_name__icontains=pattern)[:20]
+    serialized_data = ExoplanetSerializer(data, many=True)
+    return Response(serialized_data.data)

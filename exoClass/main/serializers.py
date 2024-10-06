@@ -1,11 +1,22 @@
 from rest_framework import serializers
 from .models import *
 
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = '__all__'
+
+class profileSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
+    class Meta:
+        model = Profile
+        fields = '__all__'
 class PostSerializer(serializers.ModelSerializer):
+    profile = profileSerializer(read_only=True)
     class Meta:
         model = Post
         fields = '__all__'
-from rest_framework import serializers
 
 class VoteSerializer(serializers.Serializer):
     target_type = serializers.ChoiceField(choices=['post', 'comment'])
@@ -49,4 +60,8 @@ class NodeSerializer(serializers.ModelSerializer):
     ProfileNode = ProfileNodeSerializer()
     class Meta:
         model = Node
+        fields = '__all__'
+class ExoplanetSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Exoplanets
         fields = '__all__'
