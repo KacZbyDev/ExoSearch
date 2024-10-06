@@ -74,7 +74,7 @@ class Option(models.Model):
 
 class Post(models.Model):
     id = models.AutoField(primary_key=True)
-    date = models.DateTimeField(default=datetime.date.today)
+    date = models.DateTimeField()
     text = models.TextField()
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='posts')
     header = models.CharField(max_length=255)
