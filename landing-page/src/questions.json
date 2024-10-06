@@ -1,0 +1,130 @@
+[
+  {
+    "id": 1,
+    "title": "I discovered exoplanets yesterday!",
+    "content": "Excited about my new findings! The discovery of exoplanets is a fascinating area of research. It opens up new possibilities for understanding the universe.",
+    "upVotes": 34,
+    "downVotes": 12,
+    "user": "wavyware"
+  },
+  {
+    "id": 2,
+    "title": "How do we detect exoplanets?",
+    "content": "Exploring the methods used in astronomy is essential for our understanding of distant worlds. Techniques like the transit method and radial velocity are commonly employed. Each method has its own strengths and weaknesses.",
+    "upVotes": 45,
+    "downVotes": 7,
+    "user": "astro_lover"
+  },
+  {
+    "id": 3,
+    "title": "The most intriguing exoplanet!",
+    "content": "I just read about a planet that could support life. Its location in the habitable zone of its star makes it a prime candidate for further study. Researchers are eager to learn more about its atmosphere and potential for life.",
+    "upVotes": 29,
+    "downVotes": 5,
+    "user": "space_explorer"
+  },
+  {
+    "id": 4,
+    "title": "Exoplanet atmospheres",
+    "content": "What do we know about their compositions? Understanding the atmospheres of exoplanets can reveal much about their potential habitability. Scientists use spectroscopy to analyze the light that passes through these atmospheres.",
+    "upVotes": 22,
+    "downVotes": 9,
+    "user": "cosmos_fan"
+  },
+  {
+    "id": 5,
+    "title": "Future missions to exoplanets",
+    "content": "What missions are planned for the next decade? The upcoming missions aim to enhance our ability to detect and study exoplanets. With advancements in technology, we can expect more exciting discoveries soon.",
+    "upVotes": 50,
+    "downVotes": 2,
+    "user": "nasa_fan"
+  },
+  {
+    "id": 6,
+    "title": "Do exoplanets have seasons?",
+    "content": "How do their climates compare to Earth? The axial tilt of a planet can influence its seasonal changes. Understanding this can help scientists predict the potential for life on those planets.",
+    "upVotes": 15,
+    "downVotes": 8,
+    "user": "weather_watcher"
+  },
+  {
+    "id": 7,
+    "title": "The size of exoplanets",
+    "content": "How do their sizes compare to our solar system's planets? Some exoplanets are much larger than Jupiter, while others are smaller than Earth. This diversity challenges our understanding of planet formation.",
+    "upVotes": 36,
+    "downVotes": 3,
+    "user": "planet_hunter"
+  },
+  {
+    "id": 8,
+    "title": "Life on exoplanets",
+    "content": "Could we find intelligent life elsewhere? The search for extraterrestrial intelligence has captivated humanity for centuries. While we have not yet found definitive proof, the discovery of exoplanets brings us closer to answering this question.",
+    "upVotes": 28,
+    "downVotes": 11,
+    "user": "alien_seeker"
+  },
+  {
+    "id": 9,
+    "title": "The discovery of the first exoplanet",
+    "content": "What was it like when it was first found? The discovery of 51 Pegasi b in 1995 was a groundbreaking moment in astronomy. It challenged our previous notions about planetary systems and their formation.",
+    "upVotes": 41,
+    "downVotes": 4,
+    "user": "history_buff"
+  },
+  {
+    "id": 10,
+    "title": "Exoplanet naming conventions",
+    "content": "How are new exoplanets named? The International Astronomical Union (IAU) has established guidelines for naming exoplanets. These names often reflect the culture and mythology of the planet's discovery.",
+    "upVotes": 17,
+    "downVotes": 6,
+    "user": "naming_expert"
+  },
+  {
+    "id": 11,
+    "title": "Challenges in exoplanet research",
+    "content": "What hurdles do astronomers face today? The vast distances involved make it difficult to gather data on distant planets. Additionally, the faint light from these planets poses significant challenges in observation.",
+    "upVotes": 20,
+    "downVotes": 5,
+    "user": "researcher"
+  },
+  {
+    "id": 12,
+    "title": "The role of telescopes in exoplanet discovery",
+    "content": "Which telescopes have made significant contributions? Telescopes like Hubble and Kepler have been pivotal in identifying exoplanets. They have revolutionized our understanding of the cosmos and opened new avenues for research.",
+    "upVotes": 32,
+    "downVotes": 1,
+    "user": "telescope_enthusiast"
+  },
+  {
+    "id": 13,
+    "title": "The concept of habitable zones",
+    "content": "What defines a habitable zone around a star? A habitable zone is the region where conditions might be just right for liquid water to exist. Understanding these zones is crucial for the search for life beyond Earth.",
+    "upVotes": 48,
+    "downVotes": 2,
+    "user": "habitability_expert"
+  },
+  {
+    "id": 14,
+    "title": "The impact of exoplanet studies on Earth",
+    "content": "How does studying other planets benefit us? Research on exoplanets can help us understand our own planet's climate and geological processes. Additionally, it can guide future missions to explore space.",
+    "upVotes": 24,
+    "downVotes": 7,
+    "user": "environmentalist"
+  },
+  {
+    "id": 15,
+    "title": "Interstellar travel and exoplanets",
+    "content": "Is traveling to exoplanets a realistic goal? While current technology limits our ability to reach distant stars, concepts like warp drives inspire future exploration. The quest for interstellar travel continues to fuel scientific curiosity.",
+    "upVotes": 30,
+    "downVotes": 4,
+    "user": "future_thinker"
+  },
+  {
+    "id": 16,
+    "title": "Exoplanets and their parent stars",
+    "content": "How do the stars influence the planets orbiting them? The properties of a star, such as its size and temperature, can greatly affect the planets around it. This interaction is vital for understanding planetary systems.",
+    "upVotes": 35,
+    "downVotes": 10,
+    "user": "star_watcher"
+  }
+]

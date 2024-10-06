@@ -1,0 +1,36 @@
+body {
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  /*font-family: "JetBrains Mono", monospace;*/
+  /*font-optical-sizing: auto;*/
+  /*font-weight: 400;*/
+  /*font-style: normal;*/
+ 
+}
+
+.background {
+  background-image: url("../src/assets/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+.link-arrow {
+  visibility: hidden;
+  color: white;
+  transition: all 0.15s cubic-bezier(.25,.8,.25,1);
+  opacity: 0;
+}
+
+.recent-question-list-item:hover > .link-arrow {
+  visibility: visible;
+  opacity: 1;
+  transition-delay: 0s;
+}
+
+.recent-question-list-item > .link-arrow {
+  transition-delay: 0.15s;
+}
