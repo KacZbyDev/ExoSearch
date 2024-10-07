@@ -25,7 +25,7 @@ ExoSearch
 
 # Install
 
-To clone and run this application, you'll need Git, Node.js, PostgreSQL, Python (which comes with npm) installed on your computer. From your command line:
+To clone and run this application, you'll need Git, Node.js (which comes with npm), PostgreSQL, Python installed on your computer. From your command line:
 
 ```bash
 # Clone this repository
